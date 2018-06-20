@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import Ideas from "./Components/Ideas";
-import "./App.css";
+import Navbar from "./Components/Navbar";
+import Login from "./Components/Login";
+
+import "./styles/style.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        MyApp
-        <Ideas test="HelloWorld" />
+        <Navbar />
+        <Ideas />
+        <Login />
       </div>
     );
   }

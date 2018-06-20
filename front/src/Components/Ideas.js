@@ -22,6 +22,7 @@ class Ideas extends Component {
           fetch(`http://localhost:5000/api/users/${item.user}`)
             .then(res => res.json())
             .then(childitem => {
+              console.log(childitem);
               return this.state.users.push({ childitem });
             });
           return null;
@@ -32,27 +33,22 @@ class Ideas extends Component {
 
   render() {
     let { isLoaded, items, users } = this.state;
-    console.log(users);
-    console.log(items);
+
     if (!isLoaded) {
       return <div>Loading..</div>;
     } else {
       return (
         <div className="Ideas">
-          <ul>
-            {items.map(item => (
-              <li key={item._id}>
-                <a>{item.title}</a>
-                <p>{item.description}</p>
-              </li>
-            ))}
-            {users.map(user => (
-              <li key={user.id}>
-                <a>{user.name}</a>
-                <p>{user.email}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="container">
+            <ul>
+              {items.map(item => (
+                <li key={item._id}>
+                  <a>{item.title}</a>
+                  <p>{item.description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       );
     }
