@@ -4,14 +4,21 @@
   "description": "Web application for posting ideas to the world",
   "main": "app.js",
   "scripts": {
+    "install-all": "concurrently \"npm run back-install\" \"npm run front-install\"",
+    "back-install": "npm install",
+    "front-install": "npm install --prefix front",
     "start": "node app.js",
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "front": "npm start --prefix front",
+    "dev": "concurrently \"npm run server\" \"npm run front\""
   },
   "author": "Ante Vukusic",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^3.5.1",
+    "create-react-app": "^1.5.2",
     "express": "^4.16.3",
     "gravatar": "^1.6.0",
     "jsonwebtoken": "^8.2.2",

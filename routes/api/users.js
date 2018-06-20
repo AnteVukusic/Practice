@@ -104,4 +104,24 @@ router.post("/login", (req, res) => {
     .catch(err => console.log(err));
 });
 
+//  @route    Get user
+//  @desc     get user by his id
+//  @access   Public
+
+router.get("/:id", (req, res) => {
+  const errors = {};
+  User.findById(req.params.id).then(user => {
+    if (!user) {
+      errors.notfound = "No user found";
+      return res.status(404).json(errors);
+    }
+
+    return res.json({
+      name: user.name,
+      email: user.email,
+      id: req.params.id
+    });
+  });
+});
+
 module.exports = router;
